@@ -7,13 +7,9 @@ class IContract(ABC):
 
     _abi: str = None
 
-    def __init__(
-            self,
-            address: str,
-            provider: BaseProvider
-    ) -> None:
+    def __init__(self, address: str, provider: BaseProvider) -> None:
         self.w3 = Web3(provider)
-        self.contract = self.w3.eth.contract(address=Web3.toChecksumAddress(value=address), abi=self._abi)
+        self.contract = self.w3.eth.contract(address=Web3.toChecksumAddress(value=address), abi=self.abi)
 
     @property
     def address(self) -> str:
