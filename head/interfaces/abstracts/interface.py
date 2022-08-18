@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from interfaces.fabrics.interface import IConcreteFabric
+from head.interfaces.fabrics.interface import IConcreteFabric
 
 
 class IAbstractFabric(ABC):
