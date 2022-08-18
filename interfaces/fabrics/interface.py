@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class IConcreteFabric(ABC):
+class IConcreteFabri(ABC):
 
     def __init__(self) -> None:
         self._products: dict = dict()
