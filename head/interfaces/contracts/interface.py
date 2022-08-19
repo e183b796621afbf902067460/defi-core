@@ -2,6 +2,8 @@ from abc import ABC
 from web3 import Web3
 from web3.providers.base import BaseProvider
 
+from head.decorators.buildermethod import buildermethod
+
 
 class IContract(ABC):
 
@@ -28,16 +30,16 @@ class IContract(ABC):
     def getAddress(self) -> str:
         return self._address
 
+    @buildermethod
     def setAddress(self, address: str):
         self._address: str = address
-        return self
 
     def getProvider(self) -> BaseProvider:
         return self._provider
 
+    @buildermethod
     def setProvider(self, provider: BaseProvider):
         self._provider: BaseProvider = provider
-        return self
 
     address = property(
         fget=getAddress,
