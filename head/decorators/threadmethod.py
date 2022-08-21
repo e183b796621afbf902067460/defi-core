@@ -4,13 +4,13 @@ from concurrent.futures import Future
 
 def threadmethod(fn):
 
-    def futurefunc(func, future, *args, **kwargs):
+    def futurefunc(func, ft, *args, **kwargs):
         ret = func(*args, **kwargs)
-        future.set_result(ret)
+        ft.set_result(ret)
 
     def wrapper(*args, **kwargs):
-        future = Future()
-        Thread(target=futurefunc, args=(fn, future, *args, kwargs)).start()
-        return future
+        ft = Future()
+        Thread(target=futurefunc, args=(fn, ft, *args, kwargs)).start()
+        return ft
 
     return wrapper
