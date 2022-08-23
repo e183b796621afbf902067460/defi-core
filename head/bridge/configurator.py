@@ -13,16 +13,8 @@ class BridgeConfigurator:
     def abstractFabric(self) -> IAbstractFabric:
         return self._abstractFabric
 
-    @property
-    def fabricKey(self) -> str:
-        return self._fabricKey
-
-    @property
-    def productKey(self) -> str:
-        return self._productKey
-
     def produceFabric(self) -> IConcreteFabric:
-        return self.abstractFabric.getFabric(self.fabricKey)
+        return self.abstractFabric.getFabric(self._fabricKey)
 
-    def produceProduct(self) -> object:
-        return self.produceFabric().getProduct(self.productKey)
+    def produceProduct(self):
+        return self.produceFabric().getProduct(self._productKey)
