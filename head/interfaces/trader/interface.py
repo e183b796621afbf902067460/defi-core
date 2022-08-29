@@ -10,7 +10,7 @@ class ITraderComponent(ABC):
     _parent = None
 
     @abstractmethod
-    def getPrice(self, major: str, vs: str) -> float:
+    def getPrice(self, major: str, vs: str, *args, **kwargs) -> float:
         raise NotImplementedError(f"{self.__class__.__name__} doesn't have an {self.getPrice.__name__}() implementation")
 
     @buildermethod
