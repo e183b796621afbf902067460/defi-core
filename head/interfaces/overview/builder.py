@@ -14,10 +14,10 @@ class IInstrumentOverview(IContract):
         raise NotImplementedError(f"{self.__class__.__name__} doesn't have an {self.getOverview.__name__}() implementation")
 
     @buildermethod
-    def setTrader(self, trader: ITraderComponent):
-        self._trader: ITraderComponent = trader
+    def setTrader(self, trader):
+        self._trader = trader
 
-    def getTrader(self) -> ITraderComponent:
+    def getTrader(self):
         return self._trader
 
     trader = property(
