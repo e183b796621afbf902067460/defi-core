@@ -10,7 +10,7 @@ def threadmethod(fn):
 
     def wrapper(*args, **kwargs):
         ft = Future()
-        Thread(target=futurefunc, args=(fn, ft, *args, kwargs)).start()
+        Thread(target=futurefunc, args=(fn, ft, *args, *kwargs.values())).start()
         return ft
 
     return wrapper
