@@ -1,7 +1,6 @@
 from abc import abstractmethod
 
 from head.interfaces.contracts.builder import IContract
-from head.interfaces.trader.interface import ITraderComponent
 from head.decorators.buildermethod import buildermethod
 
 
