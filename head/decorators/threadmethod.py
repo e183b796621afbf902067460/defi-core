@@ -1,4 +1,4 @@
-from threading import Thread
+from threading import Thread, active_count
 from concurrent.futures import Future
 
 
@@ -10,7 +10,8 @@ def threadmethod(fn):
 
     def wrapper(*args, **kwargs):
         ft = Future()
-        Thread(target=futurefunc, args=(fn, ft, *args, *kwargs.values())).start()
+        t = Thread(target=futurefunc, args=(fn, ft, *args, *kwargs.values()))
+        t.start()
         return ft
 
     return wrapper
