@@ -1,4 +1,5 @@
 from abc import ABC
+from sqlalchemy.engine.base import Engine
 
 
 class ISettings(ABC):
@@ -9,3 +10,9 @@ class ISettings(ABC):
 
     DB_URL = None
     DB_ENGINE = None
+
+    def get_engine(self) -> Engine:
+        return NotImplemented("Interface doesn't have an Engine")
+
+    def get_uri(self) -> str:
+        return NotImplemented("Interface doesn't have an URI")
