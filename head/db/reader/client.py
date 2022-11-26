@@ -1,7 +1,7 @@
 from typing import List
 from sqlalchemy.engine.row import Row
 
-from head.interfaces.clients.db.client import IClient
+from head.interfaces.db.clients.interface import IClient
 from head.decorators.singleton import singleton
 
 
