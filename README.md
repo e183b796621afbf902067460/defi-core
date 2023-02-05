@@ -1,5 +1,8 @@
-# DeFi Head Core
-No dependencies.
+# Knowledge Capital
+There is some additional study resources about whole disciplines where I'm interesed in.
 
 ---
-DeFi Head Core is the main library with interfaces that are implemented in specific [Data Platform](https://github.com/e183b796621afbf902067460/defi-notebooks) components.
+
+## freeCodeCamp.org
+
+1. [College Algebra – Full Course with Python Code](https://www.youtube.com/watch?v=i7vOAcUo5iA)
