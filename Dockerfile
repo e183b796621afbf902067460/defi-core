@@ -7,3 +7,14 @@ COPY ./scripts/sed.sh sed.sh
 ARG KAFKA_BROKER_LIST
 ARG KAFKA_TOPIC_LIST
 ARG KAFKA_GROUP_NAME
+
+ARG IS_DEV
+RUN if [ ! -z "$IS_DEV" ] ; then \
+    bash sed.sh KAFKA_BROKER_LIST ${KAFKA_BROKER_LIST}; \
+fi
+RUN if [ ! -z "$IS_DEV" ] ; then \
+    bash sed.sh KAFKA_TOPIC_LIST ${KAFKA_TOPIC_LIST}; \
+fi
+RUN if [ ! -z "$IS_DEV" ] ; then \
+    bash sed.sh KAFKA_GROUP_NAME ${KAFKA_GROUP_NAME}; \
+fi
