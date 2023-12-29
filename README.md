@@ -35,7 +35,7 @@ docker-compose down
 
 ### ClickHouse environment variables
 
-- `CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT`:
+- `CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT`: ClickHouse application default access management.
 - `CLICKHOUSE_HOST`: ClickHouse application host.
 - `CLICKHOUSE_DB`: ClickHouse application database name.
 - `CLICKHOUSE_USER`: ClickHouse application user.
