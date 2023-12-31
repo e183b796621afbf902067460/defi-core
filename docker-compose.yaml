@@ -35,20 +35,6 @@ services:
     networks:
       - clickhouse-tier
 
-  kafka-ui:
-    image: provectuslabs/kafka-ui:latest
-    ports:
-      - "8080:8080"
-    restart: always
-    environment:
-      KAFKA_CLUSTERS_0_NAME: local
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
-    depends_on:
-      kafka:
-        condition: service_healthy
-    networks:
-      - clickhouse-tier
-
   clickhouse:
     build:
       context: ./
@@ -57,6 +43,7 @@ services:
         - KAFKA_BROKER_LIST=kafka:9092
         - KAFKA_TOPIC_LIST=topic
         - KAFKA_GROUP_NAME=q_real_time_tx_processing_ch
+        - CLICKHOUSE_DB=clickhouse
         - IS_DEV=1
     command: ['bash', 'entrypoint.sh']
     environment:
