@@ -1,8 +1,8 @@
 -- Actual database to store the data
-CREATE DATABASE IF NOT EXISTS clickhouse;
+CREATE DATABASE IF NOT EXISTS {$CLICKHOUSE_DB};
 
 -- Actual table to store the data fetched from an Apache Kafka topic
-CREATE TABLE IF NOT EXISTS clickhouse.dm_real_time_tx_processing
+CREATE TABLE IF NOT EXISTS {$CLICKHOUSE_DB}.dm_real_time_tx_processing
 (
     dm_real_time_tx_processing_address           String,
 
@@ -27,7 +27,7 @@ PARTITION BY toYYYYMMDD(dm_real_time_tx_processing_timestamp)
 ORDER BY dm_real_time_tx_processing_timestamp;
 
 -- Kafka Engine which consumes the data from 'app.topic' of Apache Kafka
-CREATE TABLE IF NOT EXISTS clickhouse.q_real_time_tx_processing
+CREATE TABLE IF NOT EXISTS {$CLICKHOUSE_DB}.q_real_time_tx_processing
 (
     q_real_time_tx_processing_address           String,
 
@@ -52,7 +52,7 @@ SETTINGS
     kafka_format = 'JSONEachRow';
 
 -- Materialized View to insert any consumed data by Kafka Engine to 'dm_real_time_tx_processing' table
-CREATE MATERIALIZED VIEW IF NOT EXISTS clickhouse.mv_real_time_tx_processing TO clickhouse.dm_real_time_tx_processing AS
+CREATE MATERIALIZED VIEW IF NOT EXISTS {$CLICKHOUSE_DB}.mv_real_time_tx_processing TO {$CLICKHOUSE_DB}.dm_real_time_tx_processing AS
 SELECT
     q_real_time_tx_processing_address AS dm_real_time_tx_processing_address,
     q_real_time_tx_processing_swap_maker AS dm_real_time_tx_processing_swap_maker,
@@ -65,4 +65,4 @@ SELECT
     q_real_time_tx_processing_blockchain AS dm_real_time_tx_processing_blockchain,
     q_real_time_tx_processing_timestamp AS dm_real_time_tx_processing_timestamp
 FROM
-    clickhouse.q_real_time_tx_processing;
+    {$CLICKHOUSE_DB}.q_real_time_tx_processing;
