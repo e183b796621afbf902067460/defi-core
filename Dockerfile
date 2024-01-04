@@ -1,6 +1,9 @@
 # Use the official ClickHouse image as the base image
 FROM clickhouse/clickhouse-server:23.1-alpine
 
+ENV CLICKHOUSE_DB=clickhouse
+ENV CLICKHOUSE_USER=clickhouse
+
 COPY ./docker-entrypoint-initdb.d/ /docker-entrypoint-initdb.d/
 COPY ./scripts/sed.sh sed.sh
 
