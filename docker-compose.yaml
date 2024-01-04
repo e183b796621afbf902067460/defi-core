@@ -40,11 +40,10 @@ services:
       context: ./
       dockerfile: Dockerfile
       args:
+        - IS_DEV=1
         - KAFKA_BROKER_LIST=kafka:9092
         - KAFKA_TOPIC_LIST=topic
         - KAFKA_GROUP_NAME=q_real_time_tx_processing_ch
-        - CLICKHOUSE_DB=clickhouse
-        - IS_DEV=1
     command: ['bash', 'entrypoint.sh']
     environment:
       CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT: 1

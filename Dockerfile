@@ -8,8 +8,6 @@ ARG KAFKA_BROKER_LIST
 ARG KAFKA_TOPIC_LIST
 ARG KAFKA_GROUP_NAME
 
-ARG CLICKHOUSE_DB
-
 ARG IS_DEV
 RUN if [ ! -z "$IS_DEV" ] ; then \
     bash sed.sh KAFKA_BROKER_LIST ${KAFKA_BROKER_LIST}; \
@@ -19,8 +17,4 @@ RUN if [ ! -z "$IS_DEV" ] ; then \
 fi
 RUN if [ ! -z "$IS_DEV" ] ; then \
     bash sed.sh KAFKA_GROUP_NAME ${KAFKA_GROUP_NAME}; \
-fi
-
-RUN if [ ! -z "$IS_DEV" ] ; then \
-    bash sed.sh CLICKHOUSE_DB ${CLICKHOUSE_DB}; \
 fi
